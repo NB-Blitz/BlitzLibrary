@@ -1,4 +1,4 @@
-package Blitz.Lib.Drive;
+package com.nbblitz.lib.drive;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
@@ -6,7 +6,8 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class SparkMotor {
+public class SparkMotor
+{
     private double direction = 0;
     private double value = 0;
     private boolean usePID = false;

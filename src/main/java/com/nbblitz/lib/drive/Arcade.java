@@ -1,28 +1,28 @@
-package Blitz.Lib.Drive;
+package com.nbblitz.lib.drive;
 
-public class Mecanum extends Drivetrain {
+public class Arcade extends Drivetrain
+{
 
     /**
      * Stops the robot from moving
      */
     public void drive()
     {
-        drive(0, 0, 0);
+        drive(0, 0);
     }
 
     /**
-     * Drives a robot with a mecanum drivetrian
-     * @param x - X axis (Left - Right)
-     * @param y - Y axis (Up - Down)
+     * Drives the robot with arcade-style controls
+     * @param y - Y axis (Forward - Backward)
      * @param z - Z axis (Rotation)
      */
-    public void drive(double x, double y, double z)
+    public void drive(double y, double z)
     {
         double[] motorValues = {
-            x + y - z,
-            -x + y - z,
-            -x + y + z,
-            x + y + z
+            y - z,
+            y - z,
+            y + z,
+            y + z
         };
 
         double maxMagnitude = 0;

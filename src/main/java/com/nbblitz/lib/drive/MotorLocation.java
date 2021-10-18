@@ -1,6 +1,7 @@
-package Blitz.Lib.Drive;
+package com.nbblitz.lib.drive;
 
-public enum MotorLocation {
+public enum MotorLocation
+{
     FrontLeft,
     FrontRight,
     BackLeft,

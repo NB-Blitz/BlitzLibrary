@@ -1,4 +1,4 @@
-package Blitz.Lib.Control;
+package com.nbblitz.lib.control;
 
 public class Axis
 {

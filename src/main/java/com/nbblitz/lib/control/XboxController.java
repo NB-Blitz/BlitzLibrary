@@ -1,8 +1,9 @@
-package Blitz.Lib.Control;
+package com.nbblitz.lib.control;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class XboxController extends Joystick {
+public class XboxController extends Joystick
+{
 
     // Buttons
     public Button AButton = new Button();

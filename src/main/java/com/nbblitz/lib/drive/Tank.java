@@ -1,6 +1,7 @@
-package Blitz.Lib.Drive;
+package com.nbblitz.lib.drive;
 
-public class Tank extends Drivetrain {
+public class Tank extends Drivetrain
+{
 
     /**
      * Stops the robot from moving

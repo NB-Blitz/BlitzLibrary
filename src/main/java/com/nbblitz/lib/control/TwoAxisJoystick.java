@@ -1,8 +1,8 @@
-package Blitz.Lib.Control;
+package com.nbblitz.lib.control;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class ThreeAxisJoystick extends Joystick {
+public class TwoAxisJoystick extends Joystick {
 
     // Buttons
     public Button Trigger = new Button();
@@ -13,10 +13,6 @@ public class ThreeAxisJoystick extends Joystick {
     public Button Button6 = new Button();
     public Button Button7 = new Button();
     public Button Button8 = new Button();
-    public Button Button9 = new Button();
-    public Button Button10 = new Button();
-    public Button Button11 = new Button();
-    public Button Button12 = new Button();
 
     private final int TRIGGER_ID = 1;
     private final int BUTTON2_ID = 2;
@@ -26,27 +22,21 @@ public class ThreeAxisJoystick extends Joystick {
     private final int BUTTON6_ID = 6;
     private final int BUTTON7_ID = 7;
     private final int BUTTON8_ID = 8;
-    private final int BUTTON9_ID = 8;
-    private final int BUTTON10_ID = 8;
-    private final int BUTTON11_ID = 8;
-    private final int BUTTON12_ID = 8;
 
     // Axis
     public Axis XAxis = new Axis();
     public Axis YAxis = new Axis();
-    public Axis ZAxis = new Axis();
     public Axis Dial = new Axis();
 
     private final int X_AXIS_ID = 0;
     private final int Y_AXIS_ID = 1;
-    private final int Z_AXIS_ID = 2;
-    private final int DIAL_ID = 3;
+    private final int DIAL_ID = 2;
 
     /**
      * Defines a 2-Axis Joystick
      * @param port - Port ID the joystick is plugged in to
      */
-    public ThreeAxisJoystick(int port)
+    public TwoAxisJoystick(int port)
     {
         super(port);
     }
@@ -65,15 +55,20 @@ public class ThreeAxisJoystick extends Joystick {
         Button6.update(this.getRawButton(BUTTON6_ID));
         Button7.update(this.getRawButton(BUTTON7_ID));
         Button8.update(this.getRawButton(BUTTON8_ID));
-        Button9.update(this.getRawButton(BUTTON9_ID));
-        Button10.update(this.getRawButton(BUTTON10_ID));
-        Button11.update(this.getRawButton(BUTTON11_ID));
-        Button12.update(this.getRawButton(BUTTON12_ID));
 
         // Axis
         XAxis.update(this.getRawAxis(X_AXIS_ID));
         YAxis.update(this.getRawAxis(Y_AXIS_ID));
-        ZAxis.update(this.getRawAxis(Z_AXIS_ID));
         Dial .update(this.getRawAxis(DIAL_ID));
+    }
+
+    /**
+     * Rumbles the controller
+     * @param intensity - A value between 0 - 1 relating to the intensity
+     */
+    public void rumble(double intensity)
+    {
+        this.setRumble(RumbleType.kLeftRumble, intensity);
+        this.setRumble(RumbleType.kRightRumble, intensity);
     }
 }

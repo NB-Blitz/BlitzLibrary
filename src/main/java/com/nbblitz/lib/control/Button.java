@@ -1,6 +1,7 @@
-package Blitz.Lib.Control;
+package com.nbblitz.lib.control;
 
-public class Button {
+public class Button
+{
     private boolean isPressed = false;
     private boolean prePressed = false;
     private boolean isToggled = false;
