@@ -2,8 +2,7 @@ package com.nbblitz.lib.control;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class ThreeAxisJoystick extends Joystick
-{
+public class ThreeAxisJoystick {
 
     // Buttons
     public Button Trigger = new Button();
@@ -43,38 +42,41 @@ public class ThreeAxisJoystick extends Joystick
     private final int Z_AXIS_ID = 2;
     private final int DIAL_ID = 3;
 
+    // Joystick
+    Joystick joystick;
+
     /**
      * Defines a 2-Axis Joystick
+     * 
      * @param port - Port ID the joystick is plugged in to
      */
-    public ThreeAxisJoystick(int port)
-    {
-        super(port);
+    public ThreeAxisJoystick(int port) {
+        this.joystick = new Joystick(port);
     }
 
     /**
-     * Updates all buttons and axis with the latest information. Only run this function once per loop!
+     * Updates all buttons and axis with the latest information. Only run this
+     * function once per loop!
      */
-    public void update()
-    {
+    public void update() {
         // Buttons
-        Trigger.update(this.getRawButton(TRIGGER_ID));
-        Button2.update(this.getRawButton(BUTTON2_ID));
-        Button3.update(this.getRawButton(BUTTON3_ID));
-        Button4.update(this.getRawButton(BUTTON4_ID));
-        Button5.update(this.getRawButton(BUTTON5_ID));
-        Button6.update(this.getRawButton(BUTTON6_ID));
-        Button7.update(this.getRawButton(BUTTON7_ID));
-        Button8.update(this.getRawButton(BUTTON8_ID));
-        Button9.update(this.getRawButton(BUTTON9_ID));
-        Button10.update(this.getRawButton(BUTTON10_ID));
-        Button11.update(this.getRawButton(BUTTON11_ID));
-        Button12.update(this.getRawButton(BUTTON12_ID));
+        Trigger.update(joystick.getRawButton(TRIGGER_ID));
+        Button2.update(joystick.getRawButton(BUTTON2_ID));
+        Button3.update(joystick.getRawButton(BUTTON3_ID));
+        Button4.update(joystick.getRawButton(BUTTON4_ID));
+        Button5.update(joystick.getRawButton(BUTTON5_ID));
+        Button6.update(joystick.getRawButton(BUTTON6_ID));
+        Button7.update(joystick.getRawButton(BUTTON7_ID));
+        Button8.update(joystick.getRawButton(BUTTON8_ID));
+        Button9.update(joystick.getRawButton(BUTTON9_ID));
+        Button10.update(joystick.getRawButton(BUTTON10_ID));
+        Button11.update(joystick.getRawButton(BUTTON11_ID));
+        Button12.update(joystick.getRawButton(BUTTON12_ID));
 
         // Axis
-        XAxis.update(this.getRawAxis(X_AXIS_ID));
-        YAxis.update(this.getRawAxis(Y_AXIS_ID));
-        ZAxis.update(this.getRawAxis(Z_AXIS_ID));
-        Dial .update(this.getRawAxis(DIAL_ID));
+        XAxis.update(joystick.getRawAxis(X_AXIS_ID));
+        YAxis.update(joystick.getRawAxis(Y_AXIS_ID));
+        ZAxis.update(joystick.getRawAxis(Z_AXIS_ID));
+        Dial.update(joystick.getRawAxis(DIAL_ID));
     }
 }

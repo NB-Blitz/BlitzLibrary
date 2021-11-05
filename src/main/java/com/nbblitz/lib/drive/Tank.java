@@ -1,34 +1,26 @@
 package com.nbblitz.lib.drive;
 
-public class Tank extends Drivetrain
-{
+public class Tank extends Drivetrain {
 
     /**
      * Stops the robot from moving
      */
-    public void drive()
-    {
+    public void drive() {
         drive(0, 0);
     }
 
     /**
      * Drives a robot with a tank drivetrain
-     * @param left - Left input
+     * 
+     * @param left  - Left input
      * @param right - Right input
      */
-    public void drive(double left, double right)
-    {
-        double[] motorValues = {
-            left,
-            left,
-            right,
-            right
-        };
+    public void drive(double left, double right) {
+        double[] motorValues = { left, left, right, right };
 
         double maxMagnitude = 0;
 
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < 4; i++) {
             motorValues[i] = Math.abs(motorValues[i]);
             if (maxMagnitude < motorValues[i])
                 maxMagnitude = motorValues[i];
@@ -38,9 +30,9 @@ public class Tank extends Drivetrain
             for (int i = 0; i < 4; i++)
                 motorValues[i] /= maxMagnitude;
 
-        this.setMotorValue(MotorLocation.FrontLeft , motorValues[0]);
+        this.setMotorValue(MotorLocation.FrontLeft, motorValues[0]);
         this.setMotorValue(MotorLocation.FrontRight, motorValues[1]);
-        this.setMotorValue(MotorLocation.BackLeft  , motorValues[2]);
-        this.setMotorValue(MotorLocation.BackRight , motorValues[3]);
+        this.setMotorValue(MotorLocation.BackLeft, motorValues[2]);
+        this.setMotorValue(MotorLocation.BackRight, motorValues[3]);
     }
 }

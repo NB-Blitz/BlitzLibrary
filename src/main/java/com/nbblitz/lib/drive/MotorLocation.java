@@ -1,9 +1,5 @@
 package com.nbblitz.lib.drive;
 
-public enum MotorLocation
-{
-    FrontLeft,
-    FrontRight,
-    BackLeft,
-    BackRight
+public enum MotorLocation {
+    FrontLeft, FrontRight, BackLeft, BackRight
 }

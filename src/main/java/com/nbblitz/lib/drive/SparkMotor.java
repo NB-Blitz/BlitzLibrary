@@ -6,8 +6,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class SparkMotor
-{
+public class SparkMotor {
     private double direction = 0;
     private double value = 0;
     private boolean usePID = false;
@@ -18,10 +17,10 @@ public class SparkMotor
 
     /**
      * Initializes a Spark Max motor
+     * 
      * @param motorID - CAN ID of the spark motor
      */
-    public SparkMotor(int motorID)
-    {
+    public SparkMotor(int motorID) {
         motor = new CANSparkMax(motorID, MotorType.kBrushless);
         pidController = motor.getPIDController();
         encoder = motor.getEncoder();
@@ -32,78 +31,77 @@ public class SparkMotor
 
     /**
      * Sets the direction of the motor
+     * 
      * @param direction - The number -1 or 1 referring to the direction of the motor
      */
-    public void setDirection(double direction)
-    {
-        this.direction = direction; 
+    public void setDirection(double direction) {
+        this.direction = direction;
     }
 
     /**
      * Gets the current set value of the motor
+     * 
      * @return A number -1 - 1 referring to the value given to the motor controller
      */
-    public double getSetValue()
-    {
+    public double getSetValue() {
         return this.value;
     }
 
     /**
      * Gets the current velocity of the motor
+     * 
      * @return The velocity of the motor in RPM
      */
-    public double getVelocity()
-    {
+    public double getVelocity() {
         return this.encoder.getVelocity();
     }
 
     /**
      * Tunes the feed-forward gain in PID
+     * 
      * @param gain - F gain to set to
      */
-    public void tuneF(double gain)
-    {
+    public void tuneF(double gain) {
         this.pidController.setFF(gain);
     }
 
     /**
      * Tunes the proportional gain in PID
+     * 
      * @param gain - P gain to set to
      */
-    public void tuneP(double gain)
-    {
+    public void tuneP(double gain) {
         this.pidController.setP(gain);
     }
 
     /**
      * Tunes the integral gain in PID
+     * 
      * @param gain - I gain to set to
      */
-    public void tuneI(double gain)
-    {
+    public void tuneI(double gain) {
         this.pidController.setI(gain);
     }
 
     /**
      * Tunes the derivative gain in PID
+     * 
      * @param gain - I gain to set to
      */
-    public void tuneD(double gain)
-    {
+    public void tuneD(double gain) {
         this.pidController.setD(gain);
     }
 
-    public void enablePID()
-    {
+    public void enablePID() {
         this.usePID = true;
     }
 
     /**
      * Sets the value of the motor
+     * 
      * @param value - A number -1 - 1 refering to the motor power & direction
      */
-    public void setValue(double value)
-    {
+    public void setValue(double value) {
         if (usePID)
             this.pidController.setReference(value * this.direction * DriveReference.MAX_RPM, ControlType.kVelocity);
         else

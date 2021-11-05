@@ -1,9 +1,9 @@
 package com.nbblitz.lib.control;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 
-public class XboxController extends Joystick
-{
+public class XboxController {
 
     // Buttons
     public Button AButton = new Button();
@@ -43,48 +43,51 @@ public class XboxController extends Joystick
     private final int LEFT_TRIGGER_ID = 2;
     private final int RIGHT_TRIGGER_ID = 3;
 
+    // Joystick
+    Joystick joystick;
+
     /**
      * Defines an Xbox Controller
+     * 
      * @param port - Port ID the controller is plugged in to
      */
-    public XboxController(int port)
-    {
-        super(port);
+    public XboxController(int port) {
+        joystick = new Joystick(port);
     }
 
     /**
-     * Updates all buttons and axis with the latest information. Only run this function once per loop!
+     * Updates all buttons and axis with the latest information. Only run this
+     * function once per loop!
      */
-    public void update()
-    {
+    public void update() {
         // Buttons
-        AButton         .update(this.getRawButton(A_BUTTON_ID));
-        BButton         .update(this.getRawButton(B_BUTTON_ID));
-        XButton         .update(this.getRawButton(X_BUTTON_ID));
-        YButton         .update(this.getRawButton(Y_BUTTON_ID));
-        LeftBumper      .update(this.getRawButton(LEFT_BUMPER_ID));
-        RightBumper     .update(this.getRawButton(RIGHT_BUMPER_ID));
-        StartButton     .update(this.getRawButton(START_BUTTON_ID));
-        SelectButton    .update(this.getRawButton(SELECT_BUTTON_ID));
-        LeftStickButton .update(this.getRawButton(LEFT_STICK_BUTTON_ID));
-        RightStickButton.update(this.getRawButton(RIGHT_STICK_BUTTON_ID));
+        AButton.update(joystick.getRawButton(A_BUTTON_ID));
+        BButton.update(joystick.getRawButton(B_BUTTON_ID));
+        XButton.update(joystick.getRawButton(X_BUTTON_ID));
+        YButton.update(joystick.getRawButton(Y_BUTTON_ID));
+        LeftBumper.update(joystick.getRawButton(LEFT_BUMPER_ID));
+        RightBumper.update(joystick.getRawButton(RIGHT_BUMPER_ID));
+        StartButton.update(joystick.getRawButton(START_BUTTON_ID));
+        SelectButton.update(joystick.getRawButton(SELECT_BUTTON_ID));
+        LeftStickButton.update(joystick.getRawButton(LEFT_STICK_BUTTON_ID));
+        RightStickButton.update(joystick.getRawButton(RIGHT_STICK_BUTTON_ID));
 
         // Axis
-        LeftXAxis   .update(this.getRawAxis(LEFT_X_AXIS_ID));
-        LeftYAxis   .update(this.getRawAxis(LEFT_Y_AXIS_ID));
-        RightXAxis  .update(this.getRawAxis(RIGHT_X_AXIS_ID));
-        RightYAxis  .update(this.getRawAxis(RIGHT_Y_AXIS_ID));
-        LeftTrigger .update(this.getRawAxis(LEFT_TRIGGER_ID));
-        RightTrigger.update(this.getRawAxis(RIGHT_TRIGGER_ID));
+        LeftXAxis.update(joystick.getRawAxis(LEFT_X_AXIS_ID));
+        LeftYAxis.update(joystick.getRawAxis(LEFT_Y_AXIS_ID));
+        RightXAxis.update(joystick.getRawAxis(RIGHT_X_AXIS_ID));
+        RightYAxis.update(joystick.getRawAxis(RIGHT_Y_AXIS_ID));
+        LeftTrigger.update(joystick.getRawAxis(LEFT_TRIGGER_ID));
+        RightTrigger.update(joystick.getRawAxis(RIGHT_TRIGGER_ID));
     }
 
     /**
-     * Rumbles the controller
+     * Vibrates the controller
+     * 
      * @param intensity - A value between 0 - 1 relating to the intensity
      */
-    public void rumble(double intensity)
-    {
-        this.setRumble(RumbleType.kLeftRumble, intensity);
-        this.setRumble(RumbleType.kRightRumble, intensity);
+    public void rumble(double intensity) {
+        joystick.setRumble(RumbleType.kLeftRumble, intensity);
+        joystick.setRumble(RumbleType.kRightRumble, intensity);
     }
 }
